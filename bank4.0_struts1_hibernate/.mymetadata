@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="bank4.0_struts1_hibernate"
+  id="myeclipse.1414113256906"
+  context-root="/bank4.0_struts1_hibernate"
+  j2ee-spec="5.0"
+  archive="bank4.0_struts1_hibernate.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

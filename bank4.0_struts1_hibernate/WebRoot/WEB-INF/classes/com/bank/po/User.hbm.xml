@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="com.bank.po">
+	<class name="User" table="bank_user">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="username"  type="java.lang.String"/>
+		<property name="password"  type="java.lang.String"/>
+		<property name="money"  type="java.lang.Double"/>
+	</class>
+</hibernate-mapping>

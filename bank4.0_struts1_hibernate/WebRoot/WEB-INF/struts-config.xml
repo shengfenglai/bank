@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<!-- 注册表单 -->
+		<form-bean name="regForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="username" type="java.lang.String"></form-property>
+			<form-property name="password" type="java.lang.String"></form-property>
+			<form-property name="money" type="java.lang.Double"></form-property>
+		</form-bean>
+		<!-- 登陆表单 -->
+		<form-bean name="logForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="username" type="java.lang.String"></form-property>
+			<form-property name="password" type="java.lang.String"></form-property>
+		</form-bean>
+		<!-- 取款表单 -->
+		<form-bean name="getMoneyForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="money" type="java.lang.Double"></form-property>
+		</form-bean>
+		<!-- 存款表单 -->
+		<form-bean name="saveForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="money" type="java.lang.Double"></form-property>
+		</form-bean>
+		<!-- 转账表单 -->
+		<form-bean name="tranForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="money" type="java.lang.Double"></form-property>
+			<form-property name="username" type="java.lang.String"></form-property>
+		</form-bean>
+	</form-beans>
+
+	<global-exceptions>
+		<exception type="com.bank.exception.ExceptionSupport"
+				   path="/error.jsp"
+				   key="exception"
+		>
+		</exception>
+	</global-exceptions>
+
+
+	<action-mappings>
+		<!-- 注册 -->
+		<action path="/register"
+				type="com.bank.action.RegisterAction"
+				name="regForm" 
+				scope="request">
+				<forward name="msg" path="/msg.jsp"></forward>
+		</action>
+		<!-- 登陆 -->
+		<action path="/login"
+				type="com.bank.action.LoginAction"
+				name="logForm"
+				scope="request" >
+				<forward name="index" path="/index.jsp" redirect="false"></forward>
+		</action>
+		<!-- 查询余额 -->
+		<action path="/balance"
+				type="com.bank.action.UserAction"
+				parameter="command">
+				<forward name="balance" path="/balance.jsp"></forward>
+		</action>
+		<!-- 取款 -->
+		<action path="/getMoney"
+				type="com.bank.action.UserAction"
+				name="getMoneyForm"
+				scope="request"
+				parameter="command"
+				>
+				<forward name="index" path="/index.jsp" redirect="false"></forward>
+		</action> 
+		
+		<!-- 存款 -->
+		<action path="/saveMoney"
+				type="com.bank.action.UserAction"
+				name="saveForm"
+				scope="request"
+				parameter="command"
+				>
+				<forward name="index" path="/index.jsp" redirect="false"></forward>
+		</action> 
+		<!-- 转账 -->
+		<action path="/transfer"
+				type="com.bank.action.UserAction"
+				name="tranForm"
+				parameter="command"
+		>
+				<forward name="index" path="/index.jsp" redirect="false"></forward>
+		</action>
+		
+		<action path="/logout"
+				type="com.bank.action.UserAction"
+				parameter="command"
+				>
+				<forward name="index" path="/index.jsp"></forward>
+		</action>
+	</action-mappings>
+</struts-config>
+
